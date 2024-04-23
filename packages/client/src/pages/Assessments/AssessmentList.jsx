@@ -12,6 +12,9 @@ export const AssessmentList = () => {
     fetchAssessments();
   }, []);
 
-  return <>
-  </>;
+  return (
+    <div>
+      {assessments.map(element => <span>{element.catName}<br /></span>)}
+    </div>
+  );
 };
