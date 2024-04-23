@@ -3,6 +3,14 @@ const { Assessment } = require(`../database/models`);
 exports.submit = async (assessment) => {
   // use the sequelize model Assessments from packages/api/src/database/models to save
   // the assessment data in the PostgreSQL database
+  await Assessment.create({
+    catDateOfBirth: assessment.catDateOfBirth,
+    catName: assessment.catName,
+    instrumentType: assessment.instrumentType,
+    riskLevel: assessment.riskLevel,
+    score: assessment.score,
+  })
+    .catch((error) => { console.error(`Unable to create table: `, error); });
 };
 
 exports.getList = () => {
