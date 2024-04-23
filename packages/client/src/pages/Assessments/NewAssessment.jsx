@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { AssessmentService } from '../../services/AssessmentService';
 
@@ -44,41 +44,81 @@ export const NewAssessment = () => {
 
   return (
     <form onSubmit={handleSubmit((data) => onSubmit(data))} >
-      <label>
-        Cat Name:
-        <input {...register(`catName`)} />
-      </label>
-      <br />
-      <label>
-        Cat Date of Birth:
-        <input type="date" {...register(`catDateOfBirth`)} />
-      </label>
-      <br />
-      <label>
-        Previous contact with the Cat Judicial System:
-        <input {...register(`prevContact`)} type="checkbox" />
-      </label>
-      <br />
-      <label>
-        Had 3 or more physical altercations with other cats:
-        <input {...register(`catAltercations`)} type="checkbox" />
-      </label>
-      <br />
-      <label>
-        Has had physical altercations with the owner (scratching, biting, etc...):
-        <input {...register(`ownerAltercations`)} type="checkbox" />
-      </label>
-      <br />
-      <label>
-        Plays well with dogs:
-        <input {...register(`playsWithDogs`)} type="checkbox" />
-      </label>
-      <br />
-      <label>
-        Hisses at strangers:
-        <input {...register(`hisses`)} type="checkbox" />
-      </label>
-      <br />
+      <div className="input-group mb-3">
+        <span className="input-group-text">
+          Cat Name:
+        </span>
+        <input {...register(`catName`)} className="from-control" />
+      </div>
+
+      <div className="input-group mb-3">
+        <span className="input-group-text">
+          Cat Date of Birth:
+        </span>
+        <input type="date" {...register(`catDateOfBirth`)} className="from-control" />
+      </div>
+
+      <div className="mb-3 input-group">
+        <span className="input-group-text">
+          <input
+            name="prevContact"
+            type="checkbox"
+            className="form-check-input"
+            {...register(`prevContact`)} />
+        </span>
+        <span className="input-group-text">Previous contact with the Cat Judicial System</span>
+      </div>
+
+      <div className="mb-3 input-group">
+        <span className="input-group-text">
+          <input
+            name="prevContact"
+            type="checkbox"
+            className="form-check-input"
+            {...register(`catAltercations`)} />
+        </span>
+        <span className="input-group-text">Had 3 or more physical altercations with other cats</span>
+      </div>
+
+      <div className="mb-3 input-group">
+        <span className="input-group-text">
+          <input
+            name="prevContact"
+            type="checkbox"
+            className="form-check-input"
+            {...register(`ownerAltercations`)} />
+        </span>
+        <span className="input-group-text">
+          Has had physical altercations with the owner (scratching, biting, etc...)
+        </span>
+      </div>
+
+      <div className="mb-3 input-group">
+        <span className="input-group-text">
+          <input
+            name="prevContact"
+            type="checkbox"
+            className="form-check-input"
+            {...register(`playsWithDogs`)} />
+        </span>
+        <span className="input-group-text">
+          Plays well with dogs
+        </span>
+      </div>
+
+      <div className="mb-3 input-group">
+        <span className="input-group-text">
+          <input
+            name="prevContact"
+            type="checkbox"
+            className="form-check-input"
+            {...register(`hisses`)} />
+        </span>
+        <span className="input-group-text">
+          Hisses at strangers
+        </span>
+      </div>
+
       <Button variant="primary" type="submit">Submit</Button>
     </form>
   );
