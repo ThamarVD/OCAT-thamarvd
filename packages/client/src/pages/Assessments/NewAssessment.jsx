@@ -6,14 +6,34 @@ import { AssessmentService } from '../../services/AssessmentService';
 export const NewAssessment = () => {
   // create a form that utilizes the "onSubmit" function to send data to
   // packages/client/src/services/AssessmentService.js and then onto the packages/api/src/routes/assessment express API
-  const onSubmit = async (data) => {
-    const newScore = data.hisses + !data.playsWithDogs + data.prevContact + data.repeatedAltercation;
-    const submissionData = {
-      catDateOfBirth: data.catDateOfBirth,
-      catName: data.catname,
+  const parseData = (data) => {
+    const newInstrumentType = `Cat Behavioral Instrument`;
+
+    const newScore =
+      data.hisses + !data.playsWithDogs + data.prevContact + data.catAltercations + data.ownerAltercations;
+
+    let newRiskLevel;
+    if (newScore >= 4) {
+      newRiskLevel = `high`;
+    } else if (newScore >= 2) {
+      newRiskLevel = `medium`;
+    } else {
+      newRiskLevel = `low`;
+    }
+
+    const parsedData = {
+      catDateOfBirth: Date.parse(data.catDateOfBirth),
+      catName: data.catName,
+      instrumentType: newInstrumentType,
+      riskLevel: newRiskLevel,
       score: newScore,
     };
-    await AssessmentService.submit(submissionData);
+
+    return parsedData;
+  };
+
+  const onSubmit = async (data) => {
+    await AssessmentService.submit(parseData(data));
   };
 
   const {
@@ -26,7 +46,7 @@ export const NewAssessment = () => {
     <form onSubmit={handleSubmit((data) => onSubmit(data))} >
       <label>
         Cat Name:
-        <input {...register(`catname`)} />
+        <input {...register(`catName`)} />
       </label>
       <br />
       <label>
@@ -40,8 +60,13 @@ export const NewAssessment = () => {
       </label>
       <br />
       <label>
-        Had 3 or more physical altercations with owner (scratching, biting, etc...):
-        <input {...register(`repeatedAltercation`)} type="checkbox" />
+        Had 3 or more physical altercations with other cats:
+        <input {...register(`catAltercations`)} type="checkbox" />
+      </label>
+      <br />
+      <label>
+        Has had physical altercations with the owner (scratching, biting, etc...):
+        <input {...register(`ownerAltercations`)} type="checkbox" />
       </label>
       <br />
       <label>
