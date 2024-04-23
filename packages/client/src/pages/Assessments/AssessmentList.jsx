@@ -1,4 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import {
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from '@tanstack/react-table';
 import { AssessmentService } from '../../services/AssessmentService';
 
 export const AssessmentList = () => {
@@ -12,9 +18,5 @@ export const AssessmentList = () => {
     fetchAssessments();
   }, []);
 
-  return (
-    <div>
-      {assessments.map(element => <span>{element.catName}<br /></span>)}
-    </div>
-  );
+  return <></>;
 };
