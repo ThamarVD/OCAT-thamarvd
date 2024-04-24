@@ -11,7 +11,7 @@ export const AssessmentList = () => {
 
   const deleteElementById = async (elementId) => {
     await AssessmentService.delete(elementId);
-    setAssessments(await AssessmentService.getList());
+    fetchAssessments();
   };
 
   // fetch all assessments using the AssessmentService.getList function from OCAT/client/services/AssessmentService.js

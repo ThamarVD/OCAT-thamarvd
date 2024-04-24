@@ -51,7 +51,6 @@ export const AssessmentTable = ({ catAssessments, deleteElementById }: { catAsse
       cell: info => <Button
         variant="danger"
         onClick={async () => {
-          console.log(`click`);
           await deleteElementById(info.getValue());
         }}
       >Delete</Button>,
