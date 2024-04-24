@@ -15,6 +15,16 @@ export class AssessmentService {
     }
   }
 
+  static delete(elementId) {
+    try {
+      return axios.post(`/api/assessment/delete`, { elementId })
+        .then(response => response.data);
+    }
+    catch (err) {
+      throw new Error(`${err.response.statusText} - ${err.response.data.message}`);
+    }
+  }
+
   static getList() {
     try {
       // Choose the correct method, url, and data to send

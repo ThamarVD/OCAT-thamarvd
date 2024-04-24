@@ -9,8 +9,15 @@ exports.submit = async (assessment) => {
     instrumentType: assessment.instrumentType,
     riskLevel: assessment.riskLevel,
     score: assessment.score,
-  })
-    .catch((error) => { console.error(`Unable to create table: `, error); });
+  });
+};
+
+exports.delete = async (assessmentId) => {
+  await Assessment.destroy({
+    where: {
+      id: assessmentId,
+    },
+  });
 };
 
 exports.getList = async () => {
