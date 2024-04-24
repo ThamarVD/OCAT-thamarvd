@@ -1,12 +1,3 @@
-import React, {
-  Fragment,
-  // useEffect,
-  // useMemo,
-  // useState,
-} from 'react';
-
-// import PropTypes from 'prop-types';
-
 import {
   createColumnHelper,
   flexRender,

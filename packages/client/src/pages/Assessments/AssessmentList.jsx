@@ -1,10 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import {
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from '@tanstack/react-table';
+import { useEffect, useState } from 'react';
 import { AssessmentService } from '../../services/AssessmentService';
 import { AssessmentTable } from './Components/AssessmentTable';
 
