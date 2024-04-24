@@ -6,6 +6,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import { AssessmentService } from '../../services/AssessmentService';
+import { AssessmentTable } from './Components/AssessmentTable';
 
 export const AssessmentList = () => {
   const [ assessments, setAssessments ] = useState([]);
@@ -18,5 +19,9 @@ export const AssessmentList = () => {
     fetchAssessments();
   }, []);
 
-  return <></>;
+  return (
+    <>
+      <AssessmentTable />
+    </>
+  );
 };
