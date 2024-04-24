@@ -21,7 +21,8 @@ export const AssessmentList = () => {
 
   return (
     <>
-      <AssessmentTable />
+      <AssessmentTable
+        assessments={assessments} />
     </>
   );
 };
