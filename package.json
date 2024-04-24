@@ -10,6 +10,7 @@
     "npm-check-updates": "^16.5.1"
   },
   "dependencies": {
-    "react-hook-form": "^7.51.3"
+    "react-hook-form": "^7.51.3",
+    "react-table": "^7.8.0"
   }
 }

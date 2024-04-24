@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { SiteWrapper } from './components';
 import { DashboardBulletin } from './pages/Dashboard/DashboardBulletin';
 import { NewAssessment } from './pages/Assessments/NewAssessment.jsx';
-import { AssessmentList } from './pages/Assessments/AssessmentList';
+import { AssessmentList } from './pages/Assessments/AssessmentList.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
@@ -15,7 +15,10 @@ const router = createBrowserRouter([
     element: <NewAssessment />,
     path: `/assessment/new`,
   },
-
+  {
+    element: <AssessmentList />,
+    path: `/assessment/list`,
+  },
 ]);
 
 const App = () => <SiteWrapper>

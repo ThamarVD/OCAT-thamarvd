@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AssessmentService } from '../../services/AssessmentService';
+import { AssessmentTable } from './Components/AssessmentTable';
 
 export const AssessmentList = () => {
   const [ assessments, setAssessments ] = useState([]);
@@ -13,11 +14,10 @@ export const AssessmentList = () => {
   }, []);
 
   return (
-    <div>
-      {/*
-          List goes here
-          Please use the library react-table https://www.npmjs.com/package/react-table
-      */}
-    </div>
+    <>
+      <AssessmentTable
+        catAssessments={assessments}
+      />
+    </>
   );
 };
