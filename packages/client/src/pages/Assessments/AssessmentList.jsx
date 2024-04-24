@@ -22,7 +22,8 @@ export const AssessmentList = () => {
   return (
     <>
       <AssessmentTable
-        assessments={assessments} />
+        catAssessments={assessments}
+      />
     </>
   );
 };

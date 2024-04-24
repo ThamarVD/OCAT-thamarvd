@@ -1,5 +1,9 @@
-import React from 'react';
-// , { useEffect, useMemo, useState }
+import React, {
+  Fragment,
+  // useEffect,
+  // useMemo,
+  // useState,
+} from 'react';
 
 // import PropTypes from 'prop-types';
 
@@ -8,19 +12,21 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
-  // flexRender,
 } from '@tanstack/react-table';
 
 interface CatAssessment {
-  catName: string;
   catDateOfBirth: string;
-  score: number;
-  riskLevel: string;
+  catName: string;
   instrumentType: string;
+  riskLevel: string;
+  score: number;
 }
 
-export const AssessmentTable = ({ assessments }: { assessments: CatAssessment[] }) => {
+export const AssessmentTable = ({ catAssessments }: {catAssessments: CatAssessment[]}) => {
   const columnHelper = createColumnHelper<CatAssessment>();
+  const assessmentsTsx: CatAssessment[] = [ ...catAssessments ];
+
+  const data: CatAssessment[] = [ ...assessmentsTsx ];
 
   const columns = [
     columnHelper.accessor(`catName`, {
@@ -51,15 +57,15 @@ export const AssessmentTable = ({ assessments }: { assessments: CatAssessment[] 
   ];
 
   const table = useReactTable({
-    assessments,
     columns,
+    data,
     getCoreRowModel: getCoreRowModel(),
   });
 
   return (
     <>
       <div className="p-2">
-        <table>
+        <table className="table">
           <thead>
             {table.getHeaderGroups().map(headerGroup =>
               <tr key={headerGroup.id}>
