@@ -27,6 +27,19 @@ assessmentRouter.post(
   },
 );
 
+assessmentRouter.post(
+  `/delete`,
+  async (req, res, next) => {
+    try {
+      const { elementId } = req.body;
+
+      await AssessmentService.delete(elementId);
+    } catch (error) {
+      next(error);
+    }
+  },
+);
+
 assessmentRouter.get(
   `/`,
   async (req, res, next) => {

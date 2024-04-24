@@ -1,9 +1,11 @@
+import React from 'react';
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { Button } from 'react-bootstrap';
 
 interface CatAssessment {
   catDateOfBirth: string;
@@ -11,13 +13,13 @@ interface CatAssessment {
   instrumentType: string;
   riskLevel: string;
   score: number;
+  id: number;
 }
 
-export const AssessmentTable = ({ catAssessments }: {catAssessments: CatAssessment[]}) => {
+export const AssessmentTable = ({ catAssessments, deleteElementById }: { catAssessments: CatAssessment[];
+  deleteElementById: (elementId: number) => Promise<void>;
+}) => {
   const columnHelper = createColumnHelper<CatAssessment>();
-  const assessmentsTsx: CatAssessment[] = [ ...catAssessments ];
-
-  const data: CatAssessment[] = [ ...assessmentsTsx ];
 
   const columns = [
     columnHelper.accessor(`catName`, {
@@ -45,7 +47,19 @@ export const AssessmentTable = ({ catAssessments }: {catAssessments: CatAssessme
       footer: info => info.column.id,
       header: `Instrument Type`,
     }),
+    columnHelper.accessor(`id`, {
+      cell: info => <Button
+        variant="danger"
+        onClick={async () => {
+          await deleteElementById(info.getValue());
+        }}
+      >Delete</Button>,
+      footer: info => info.column.id,
+      header: `Delete Cat`,
+    }),
   ];
+
+  const data: CatAssessment[] = catAssessments;
 
   const table = useReactTable({
     columns,
