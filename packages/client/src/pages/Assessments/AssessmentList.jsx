@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import { AssessmentService } from '../../services/AssessmentService';
 import { AssessmentTable } from './Components/AssessmentTable';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AssessmentList = () => {
   const [ assessments, setAssessments ] = useState([]);
@@ -10,7 +12,14 @@ export const AssessmentList = () => {
   };
 
   const deleteElementById = async (elementId) => {
-    await AssessmentService.delete(elementId);
+    toast.promise(
+      AssessmentService.delete(elementId),
+      {
+        error: `Was Unable to Delete Record`,
+        pending: `Deleting Cat From Record`,
+        success: `Completed Deleting Record`,
+      }
+    );
     await fetchAssessments();
   };
 
@@ -21,6 +30,7 @@ export const AssessmentList = () => {
 
   return (
     <>
+      <ToastContainer />
       <AssessmentTable
         catAssessments={assessments}
         deleteElementById={deleteElementById}
