@@ -34,6 +34,12 @@ assessmentRouter.post(
       const { elementId } = req.body;
 
       await AssessmentService.delete(elementId);
+
+      ResponseHandler(
+        res,
+        `Deleted assessment`,
+        {},
+      );
     } catch (error) {
       next(error);
     }

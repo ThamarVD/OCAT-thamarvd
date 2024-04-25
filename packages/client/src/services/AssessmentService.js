@@ -7,7 +7,7 @@ export class AssessmentService {
       // Choose the correct method, url, and data to send
       // in a request to the express packages/api/src/routes/assessment.js
       // NOTE: the http.config file automatically adds /api to the front of your url
-      axios.post(`/api/assessment/submit`, { assessment })
+      return axios.post(`/api/assessment/submit`, { assessment })
         .then(response => response.data);
     }
     catch (err) {
@@ -17,7 +17,7 @@ export class AssessmentService {
 
   static delete(elementId) {
     try {
-      axios.post(`/api/assessment/delete`, { elementId })
+      return axios.post(`/api/assessment/delete`, { elementId })
         .then(response => response.data);
     }
     catch (err) {
