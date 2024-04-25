@@ -48,14 +48,14 @@ export const NewAssessment = () => {
         <span className="input-group-text">
           Cat Name:
         </span>
-        <input {...register(`catName`)} className="from-control" />
+        <input {...register(`catName`, { required: true })} className="from-control" />
       </div>
 
       <div className="input-group mb-3">
         <span className="input-group-text">
           Cat Date of Birth:
         </span>
-        <input type="date" {...register(`catDateOfBirth`)} className="from-control" />
+        <input type="date" {...register(`catDateOfBirth`, { required: true })} className="from-control" />
       </div>
 
       <div className="mb-3 input-group">
